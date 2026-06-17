@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: emnist-recogniser-api
+    runtime: python
+    region: oregon   # closest to Vercel US West
+    plan: free       # upgrade to Starter for no cold-start
+
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1
+
+    envVars:
+      - key: MODEL_PATH
+        value: ./emnist_net.pth
+      - key: ALLOWED_ORIGINS
+        value: https://emnist-recogniser.vercel.app,http://localhost:3000
+      - key: TOP_K
+        value: "7"
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+
+    # Add emnist_net.pth via Render Disk or bundle in repo after training
+    # disk:
+    #   name: model-weights
+    #   mountPath: /opt/render/project/src
+    #   sizeGB: 1
