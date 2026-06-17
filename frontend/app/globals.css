@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ──────────────────────────────────────────────────────── */
+:root {
+  /* Canvas */
+  --bg:           #ffffff;
+  --bg-subtle:    #f6f8fa;
+  --bg-inset:     #f0f2f5;
+  /* Borders */
+  --border:       #d0d7de;
+  --border-muted: #d8dee4;
+  /* Foreground */
+  --fg:           #1f2328;
+  --fg-muted:     #656d76;
+  --fg-subtle:    #8c959f;
+  /* Accent */
+  --blue:         #0969da;
+  --blue-dim:     #388bfd;
+  /* Status */
+  --success:      #2da44e;
+  --danger:       #cf222e;
+  /* Toasts */
+  --toast-bg:     #ffffff;
+  --toast-fg:     #1f2328;
+}
+
+.dark {
+  --bg:           #0d1117;
+  --bg-subtle:    #161b22;
+  --bg-inset:     #010409;
+  --border:       #30363d;
+  --border-muted: #21262d;
+  --fg:           #e6edf3;
+  --fg-muted:     #848d97;
+  --fg-subtle:    #6e7681;
+  --blue:         #388bfd;
+  --blue-dim:     #1f6feb;
+  --success:      #3fb950;
+  --danger:       #f85149;
+  --toast-bg:     #161b22;
+  --toast-fg:     #e6edf3;
+}
+
+/* ── Base resets ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus ring (GitHub-style) ──────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ── Scrollbar (subtle) ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--fg-subtle); }
+
+/* ── Canvas drawing cursor ──────────────────────────────────────────────── */
+.drawing-cursor { cursor: crosshair; }
+
+/* ── Shimmer skeleton ───────────────────────────────────────────────────── */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-subtle) 25%,
+    var(--bg-inset) 50%,
+    var(--bg-subtle) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ── Confidence bar transition ──────────────────────────────────────────── */
+.conf-bar {
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
