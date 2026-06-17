@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Training artefacts — NOT the final model, just the noise
+backend/data/                      # downloaded EMNIST dataset (~560 MB)
+backend/emnist_checkpoint.pth      # resumable checkpoint, not the final weights
+
+# Frontend
+node_modules/
+.next/
+.env.local
+
+# OS cruft
+.DS_Store
